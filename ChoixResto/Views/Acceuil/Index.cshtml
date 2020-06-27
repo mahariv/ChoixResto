@@ -1,0 +1,74 @@
+﻿@model ChoixResto.ViewModels.AcceuilViewModel
+@*@{
+        //ViewBag.Title = "Index";
+        Layout = null;
+    }
+
+    <! DOCTYPE HTML>
+    <html>
+    <head>
+
+    </head>
+    <body>*@
+
+@section connection
+{
+    @{
+        if (Model.Connecter == false)
+        {
+            <li>
+                @Html.ActionLink("se connecter", "Index", "Login")
+            </li>
+        }
+        else
+        {
+            <li> @Html.ActionLink("se déconnecter", "Deconnexion", "Login") </li>
+        }
+    }
+}
+
+<h2>Index</h2>
+<p> vue index du controller Acceuil</p>
+
+
+<div>
+    <p> Pret à choisir un restaurant ?</p>
+
+    @{
+        if (ViewBag.message != null)
+        {
+            <p> @ViewBag.message</p>
+        }
+    }
+
+    @using (Html.BeginForm())
+    {
+
+        <input type="submit" value="Créer un sondage" />
+    }
+
+    @{
+        if (Model.IdSondage > 0)
+        {
+            @Html.ActionLink("Afficher le resultat du sondage", "AfficheSondage", "Vote", new { idSondage = Model.IdSondage},null)
+        }
+    }
+    
+
+    <ul>
+        <li> @Html.ActionLink("Ajouter un restaurant", "AjouterRestaurant", "Restaurant") </li>
+        <li> @Html.ActionLink("Modifier un nouveau restaurant", "Index", "Restaurant") </li>
+    </ul>
+
+
+
+</div>
+
+
+@*</body>
+
+
+    </html>*@
+
+
+

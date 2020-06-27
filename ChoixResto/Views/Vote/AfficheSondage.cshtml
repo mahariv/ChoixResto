@@ -1,0 +1,48 @@
+﻿@model List<ChoixResto.Models.Resultats>
+@{
+    ViewBag.Title = "AfficheSondage";
+}
+
+<html>
+<head>
+    <link type="text/css" href="~/Content/Site.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <style type="text/css">
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    @{
+        <table>
+            <tr>
+                <th> Nom</th>
+                <th>Telephone</th>
+                <th> Nombre de vote</th>
+            </tr>
+            @foreach (ChoixResto.Models.Resultats result in Model)
+            {
+                <tr>
+                    <th>@result.Nom</th>
+                    <th>@result.Telephone</th>
+                    <th>@result.NombreDeVotes</th>
+                </tr>
+
+            }
+        </table>
+    }
+
+</body>
+</html>

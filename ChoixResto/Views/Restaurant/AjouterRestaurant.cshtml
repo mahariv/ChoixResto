@@ -1,0 +1,61 @@
+﻿@model ChoixResto.Models.Restaurant
+@{
+    ViewBag.Title = "AjouterRestaurant";
+}
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link type="text/css" href="~/Content/Site.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="~/Scripts/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <style type="text/css">
+            .field-validation-error {
+                color: #f00;
+            }
+
+            .validation-summary-errors {
+                color: #f00;
+                font-weight: bold
+            }
+
+
+            .input-validation-error {
+                border: 2px solid #f00;
+                background-color: #fee
+            }
+
+            input[type="checkbox"].input-validation-error {
+                outline: 2px solid #f00;
+            }
+        </style>
+    </head>
+    <body>
+
+        @using (Html.BeginForm()){
+        <fieldset>
+            <legend>Nouveau restaurant</legend>
+            <div>
+                @Html.LabelFor(model => model.Nom)
+                @Html.TextBoxFor(model => model.Nom)
+                @Html.ValidationMessageFor(model => model.Nom)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Telephone)
+                @Html.TextBoxFor(model => model.Telephone)
+                @Html.ValidationMessageFor(model => model.Telephone)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Adresse)
+                @Html.TextBoxFor(model => model.Adresse)
+                @Html.ValidationMessageFor(model => model.Adresse)
+             </div>
+        </fieldset>
+        <input type="submit" value="valider" />
+        }
+    </body>
+    </html>
+

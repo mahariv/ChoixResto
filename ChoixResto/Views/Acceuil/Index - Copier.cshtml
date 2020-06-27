@@ -1,0 +1,64 @@
+﻿@model ChoixResto.ViewModels.AcceuilViewModel
+@{
+    //ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<! DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+    <h2>Index</h2>
+    <p> vue index du controller Acceuil</p>
+    <div>
+        <ul>
+            <li>@ViewData["message"]</li>
+            <li>la date du jour est @(((DateTime)ViewData["date"]).ToString("dd/mm/yyyy"))</li>
+            @{
+                ChoixResto.Models.Restaurant resto = (ChoixResto.Models.Restaurant)ViewData["resto"];
+
+            }
+            @*<li> @resto.Nom</li>
+            <li> @resto.Telephone</li>
+            <li> @resto.Adresse</li>*@
+
+            <li>@Model.Message</li>
+            <li>@Model.Date.ToString("dd/MM/yyyy")</li>
+            <li>@Model.Resto.Nom</li>
+            <li>@ViewBag.date.ToString("dd/mm/yyyy")</li>
+        </ul>
+        @Html.TextBox("nom", resto.Nom)
+        <br />
+        @Html.Label("estMajeur", "Cochez la case si vous êtes majeur")
+        @Html.CheckBox("estMajeur", true)
+        <input type="submit" value="Envoyer" />
+
+        @Html.DropDownList("ListeResto", (SelectList)ViewBag.ListeRestos)
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { target = "_blank" }))
+        {
+
+            @Html.Label("estMajeur", "Cochez la case si vous êtes majeur")
+            @Html.CheckBox("estMajeur", true)
+            <input type="submit" value="Envoyer" />
+            <label> sjdbj <strong> sjbdjsb </strong></label>
+            @Html.TextBoxFor(Model => Model.Resto.Nom)
+
+            @Html.ActionLink("Modifier Restaurant", "ModifierRestaurant", "Restaurant")
+        }
+        @Html.Partial("../Acceuil/Connexion", Model)
+
+        <p> affichage de la vue partiel sur la liste des restaurants</p>
+        <!-- Action permet de lancer des methodees du controller-->
+        @Html.Action("AfficheListeRestaurant")
+
+    </div>
+</body>
+
+
+</html>
+
+
+

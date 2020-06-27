@@ -1,0 +1,21 @@
+﻿@model List<ChoixResto.Models.Restaurant>
+
+<table>
+    <tr>
+        <th>Nom </th>
+        <th> Numero</th>
+    </tr>
+    @foreach (var resto in Model)
+    {
+        <tr>
+            <th>
+                @resto.Nom
+            </th>
+            <th>
+             @resto.Telephone
+            </th>
+        </tr>
+
+    }
+
+</table>
